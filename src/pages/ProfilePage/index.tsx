@@ -20,7 +20,7 @@ const ProfilePage = () => {
         mt="4rem"
         mb="2rem"
       >
-        {characterObj?.name}
+        {characterObj?.name || "-"}
       </Title>
       <Center>
         <Accordion

@@ -12,11 +12,12 @@ const defaultParams = {
   hash: process.env.REACT_APP_MARVEL_HASH_KEY,
 };
 
-export const getCharacters = (page: number) => {
+export const getCharacters = (page: number, query: string) => {
   return publicHttpClient.get("characters", {
     params: {
       ...defaultParams,
       offset: page,
+      nameStartsWith: query ? query : undefined,
     },
   });
 };

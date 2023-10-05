@@ -6,18 +6,19 @@ interface IProps {
   activePage: number;
   isPageChanged: boolean;
   setPageChanged: (value: boolean) => void;
+  query: string;
 }
 
 const useFetchCharacters = ({
   activePage,
   isPageChanged,
   setPageChanged,
+  query,
 }: IProps) => {
-  console.log("inside Hook", activePage);
   const { data, isLoading } = useQuery({
-    queryKey: "characters",
+    queryKey: ["characters", query],
     queryFn: () => {
-      return getCharacters(activePage);
+      return getCharacters(activePage, query);
     },
     enabled: isPageChanged,
     onSuccess: () => {
