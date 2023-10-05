@@ -14,6 +14,7 @@
   font-size: 1.4rem;
   font-weight: 400;
   position: relative;
+  cursor: pointer;
 }
 
 .data {
@@ -21,4 +22,25 @@
   height: 6.4rem;
   border-left: 1px solid #f5f5f5;
   border-top: 1px solid #f5f5f5;
+}
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.tableHeadGroup {
+  background: #f5f7fc;
+  border-left: 1px solid #e6e9f0;
+}
+
+.table {
+  width: 80%;
+  border-radius: 0.8rem;
+  border: none;
+  border-spacing: 0;
 }
