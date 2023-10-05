@@ -1,15 +1,25 @@
-import React from "react";
 import { Box, Table } from "@mantine/core";
 import classes from "./styles.module.css";
 import { ICharacters } from "../../interfaces/ICharacters";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   characters: ICharacters[];
 }
 
 const CustomTable = ({ characters }: IProps) => {
+  const navigate = useNavigate();
+
+  const movetoNextPage = (characterId: number) => {
+    navigate(`/character/${characterId}`);
+  };
+
   const rows = characters?.map((character) => (
-    <Table.Tr className={classes.row}>
+    <Table.Tr
+      className={classes.row}
+      onClick={() => movetoNextPage(character.id)}
+      key={character.id}
+    >
       <Table.Td className={classes.data}>{character.name}</Table.Td>
       <Table.Td className={classes.data}>{character.description}</Table.Td>
       <Table.Td className={classes.data}>
@@ -17,29 +27,11 @@ const CustomTable = ({ characters }: IProps) => {
       </Table.Td>
     </Table.Tr>
   ));
+
   return (
-    <Box
-      style={{
-        width: "100%",
-        overflowX: "auto",
-        overflowY: "visible",
-        position: "relative",
-      }}
-    >
-      <Table
-        style={{
-          width: "100%",
-          borderRadius: "0.8rem",
-          border: "none",
-          borderSpacing: 0,
-        }}
-      >
-        <Table.Thead
-          style={{
-            background: "#F5F7FC",
-            borderLeft: "1px solid #E6E9F0",
-          }}
-        >
+    <Box className={classes.tableContainer}>
+      <Table className={classes.table}>
+        <Table.Thead className={classes.tableHeadGroup}>
           <Table.Tr>
             <Table.Th className={classes.tableHead}>Name</Table.Th>
             <Table.Th className={classes.tableHead}>Description</Table.Th>
